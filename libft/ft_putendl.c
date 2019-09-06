@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/08 20:34:59 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/08 20:35:01 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+void	ft_putendl(char const *s)
 {
-	return(0);
+	ft_putendl_fd(s, 1);
 }

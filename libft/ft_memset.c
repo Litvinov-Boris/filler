@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/04 18:57:00 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/04 18:57:01 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+void	*ft_memset(void *b, int c, size_t len)
 {
-	return(0);
+	unsigned char *save;
+
+	save = b;
+	while (len--)
+		*(save++) = c;
+	return (b);
 }

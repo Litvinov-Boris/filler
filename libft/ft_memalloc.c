@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/07 21:49:45 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/07 21:49:47 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+void	*ft_memalloc(size_t size)
 {
-	return(0);
+	void *mem;
+
+	if ((mem = (void*)malloc(size)) == NULL)
+		return (NULL);
+	ft_bzero(mem, size);
+	return (mem);
 }

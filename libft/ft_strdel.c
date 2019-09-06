@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/07 22:21:15 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/07 22:21:18 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+void	ft_strdel(char **as)
 {
-	return(0);
+	if (!as || !*as)
+		return ;
+	free(*as);
+	*as = NULL;
 }

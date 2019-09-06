@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/10 19:31:48 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/10 19:31:50 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+size_t	ft_countwords(char const *s, char c)
 {
-	return(0);
+	size_t	i;
+	int		in;
+
+	i = 0;
+	in = 0;
+	while (*s != '\0')
+	{
+		if (in == 1 && *s == c)
+			in = 0;
+		if (in == 0 && *s != c)
+		{
+			in = 1;
+			i++;
+		}
+		s++;
+	}
+	return (i);
 }

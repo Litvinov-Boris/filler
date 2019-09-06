@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/08 18:11:36 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/08 18:11:38 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	return(0);
+	char *str;
+
+	if (!s1 || !s2)
+		return (NULL);
+	if ((str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))) != NULL)
+	{
+		ft_strcat(str, s1);
+		ft_strcat(str, s2);
+	}
+	return (str);
 }

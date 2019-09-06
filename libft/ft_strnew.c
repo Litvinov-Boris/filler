@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svivienn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/06 18:45:25 by svivienn         ###   ########.fr       */
+/*   Created: 2019/04/07 22:07:08 by svivienn          #+#    #+#             */
+/*   Updated: 2019/04/07 22:07:10 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int	main()
+char	*ft_strnew(size_t size)
 {
-	return(0);
+	char *str;
+
+	if (size == (size_t)(-1))
+		return (NULL);
+	if ((str = (char*)malloc((size + 1) * sizeof(char))) == NULL)
+		return (NULL);
+	ft_bzero(str, size + 1);
+	return (str);
 }

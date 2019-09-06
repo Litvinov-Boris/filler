@@ -1,4 +1,12 @@
-NAME = test
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/09/06 18:44:19 by svivienn          #+#    #+#              #
+#    Updated: 2019/09/06 18:44:29 by svivienn         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-$(NAME):
-	gcc main.c ./get_next_line/get_next_line.c ./get_next_line/libft/libft.a -o svivenn.filler
