@@ -1,6 +1,4 @@
 NAME = test
 
 $(NAME):
-	gcc main.c
-	gcc main2.c -o test
-	./a.out| ./test
+	gcc main.c ./get_next_line/get_next_line.c ./get_next_line/libft/libft.a -o svivenn.filler
