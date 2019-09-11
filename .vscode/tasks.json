@@ -9,9 +9,10 @@
             "command": "gcc",
             "args":[
                 "-g",
-                "main.c",
-                "tools.c",
+                "main2.c",
                 "inits.c",
+                "tools.c",
+                "hot_map.c",
                 "./libft/libft.a"
             ]
         }

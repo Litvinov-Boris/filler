@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 18:43:54 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/11 11:04:08 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/11 19:24:58 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@ typedef struct s_filler
 	int			**map;
 }				t_filler;
 
-int		init_player(t_filler *play);
-int		init_map(t_filler *play);
+int		init_player(t_filler *play, int fd);
+int		init_map_info(t_filler *play, int fd);
+int	init_map(t_filler *play, int fd);
 
 void    free_map(t_filler *play);
+
+int fil_map(t_filler *play, char *str, int y);
 
 #endif
