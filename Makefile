@@ -6,13 +6,13 @@
 #    By: boris <boris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 18:44:19 by svivienn          #+#    #+#              #
-#    Updated: 2019/09/10 11:15:10 by boris            ###   ########.fr        #
+#    Updated: 2019/09/11 11:04:35 by boris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = libft/libft.a
 NAME = svivienn.filler
-SRCS =	main.c inits.c
+SRCS =	main.c inits.c tools.c
 SRCO = $(SRCS:.c=.o)
 INCLUDES = filler.h
 

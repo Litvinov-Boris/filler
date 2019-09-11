@@ -6,7 +6,7 @@
 /*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 18:44:53 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/10 11:18:18 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/11 11:04:58 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,28 @@
 int	main()
 {
 	t_filler play;
+	char *str;
 
 	int fd = open("./rez", O_RDWR);
-	if (init_player(play))
+	int fd1 = open("./test", O_RDWR);
+	if (init_player(&play))
 	{
-		write (fd, "u", 1);
+		if (init_map(&play))
+		{
+			str = ft_itoa(play.lmap);
+			write (fd, str, ft_strlen(str));
+		}
+		else
+		{
+			write (fd, "blya2", 5);
+		}
+		
 	}
 	else
 	{
-		write (fd, "blya", 4);
+		write (fd, "blya1", 5);
 	}
 	close(fd);
+	close(fd1);
 	return(0);
 }

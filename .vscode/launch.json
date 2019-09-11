@@ -5,21 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(lldb) Launch",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "/Users/svivienn/Downloads/resources/fille_vm",
-            "args": [
-                "-f",
-                "/Users/svivienn/Downloads/resources/maps/map00",
-                "-p1",
-                "/Users/svivienn/Downloads/resources/svivienn.filler"
-            ],
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb"
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }
