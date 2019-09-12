@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 18:48:42 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/11 19:25:17 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/09/12 22:24:16 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,61 @@ int	main()
 	int fd1 = open("./test", O_RDWR);
 	if (init_player(&play, fd1))
 	{
-		if (init_map_info(&play,fd1))
+		if (init_info(&(play.map),fd1))
 		{
 			if (init_map(&play,fd1))
 			{
-				for (int i = 0; i < play.hmap; i++)
+				if (init_info(&(play.figure),fd1))
 				{
-					for (int j = 0; j < play.lmap; j++)
+					if (init_figure(&(play.figure),fd1))
 					{
-						c = ft_itoa(play.map[i][j]);
+						hot_map(&(play.map));
+						write(fd, &(play.en), 1);
+						write(fd, " ", 1);
+						write(fd, &(play.my), 1);
+						write(fd, "\n", 1);
+						c = ft_itoa(play.map.hmap);
 						write(fd, c, ft_strlen(c));
-						free(c);
+						write(fd, " ", 1);
+						c = ft_itoa(play.map.lmap);
+						write(fd, c, ft_strlen(c));
+						write(fd, "\n", 1);
+						for (int i = 0; i < play.map.hmap; i++)
+						{
+							for(int j = 0; j < play.map.lmap; j++)
+							{
+								c = ft_itoa(play.map.map[i][j]);
+								write(fd, c, ft_strlen(c));
+								free(c);
+							}
+							write(fd, "\n", 1);
+						}
+						c = ft_itoa(play.figure.hmap);
+						write(fd, c, ft_strlen(c));
+						write(fd, " ", 1);
+						c = ft_itoa(play.figure.lmap);
+						write(fd, c, ft_strlen(c));
+						write(fd, "\n", 1);
+						for (int i = 0; i < play.figure.hmap; i++)
+						{
+							for(int j = 0; j < play.figure.lmap; j++)
+							{
+								c = ft_itoa((play.figure.map)[i][j]);
+								write(fd, c, ft_strlen(c));
+								free(c);
+							}
+							write(fd, "\n", 1);
+						}
 					}
-					write(fd, "\n", 1);
+					else
+					{
+						write (fd, "blya5", 5);
+					}
+					
+				}
+				else
+				{
+					write (fd, "blya4", 5);
 				}
 			}
 			else
