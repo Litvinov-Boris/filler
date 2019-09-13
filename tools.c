@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 09:35:48 by boris             #+#    #+#             */
-/*   Updated: 2019/09/12 22:32:06 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/09/13 14:23:41 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,37 @@ int	chek_zap(t_map *map, int y, int x, int k)
 	if (x > 0 && y < (*map).hmap - 1 && (*map).map[y + 1][x - 1] == k)
 		return (1);
 	return (0);
+}
+
+int	chek_minus(t_filler *obj, int y, int x)
+{
+	int	i;
+	int j;
+
+	i = -1;
+	while(++i < (*obj).figure.hmap)
+	{
+		j = -1;
+		while (++j < (*obj).figure.lmap)
+			if ((*obj).figure.map[i][j] * (*obj).map.map[y + i][x + j] == -2)
+				return (1);
+	}
+	return (0);
+}
+
+int	take_sum(t_filler *obj, int y, int x)
+{
+	int	i;
+	int j;
+	int	sum;
+
+	sum = 0;
+	i = -1;
+	while(++i < (*obj).figure.hmap)
+	{
+		j = -1;
+		while (++j < (*obj).figure.lmap)
+			sum += (*obj).figure.map[i][j] * (*obj).map.map[y + i][x + j];
+	}
+	return (sum);
 }

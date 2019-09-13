@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+         #
+#    By: boris <boris@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 18:44:19 by svivienn          #+#    #+#              #
-#    Updated: 2019/09/11 19:52:19 by svivienn         ###   ########.fr        #
+#    Updated: 2019/09/13 14:30:52 by boris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ $(SRCO): %.o: %.c
 $(NAME): $(LIBFT) $(SRCO)
 	#gcc $F -g $(SRCO) -o /Users/svivienn/Downloads/resources/svivienn.filler $(LIBFT)
 	#chmod 777 /Users/svivienn/Downloads/resources/svivienn.filler
-	gcc $F -g $(SRCO) $(LIBFT)
-	#chmod 777 svivienn.filler
+	gcc $F -g $(SRCO) -o /home/boris/Загрузки/resources/resources/svivienn.filler $(LIBFT)
+	chmod 777 /home/boris/Загрузки/resources/resources/svivienn.filler
 
 clean:
 	rm -f $(SRCO)

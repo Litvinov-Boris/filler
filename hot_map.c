@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hot_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 19:08:06 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/12 22:37:57 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/09/13 14:17:08 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,33 @@ void	hot_map(t_map *map)
 				}
 		}
 		k++;
+	}
+}
+
+void push_figure(t_filler *obj)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while(++i <= (*obj).map.hmap - (*obj).figure.hmap)
+	{
+		j = -1;
+		while(++j <= (*obj).map.lmap - (*obj).figure.lmap)
+			if(chek_minus(obj, i, j))
+			{
+				if ((*obj).min == -100)
+				{
+					(*obj).min = take_sum(obj, i, j);
+					(*obj).x = j;
+					(*obj).y = i;
+				}
+				else if ((*obj).min > take_sum(obj, i, j))
+				{
+					(*obj).min = take_sum(obj, i, j);
+					(*obj).x = j;
+					(*obj).y = i;
+				}
+			}
 	}
 }
