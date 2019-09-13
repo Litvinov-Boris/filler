@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 09:35:48 by boris             #+#    #+#             */
-/*   Updated: 2019/09/13 14:23:41 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/13 23:13:35 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@ void    free_map(t_map *obj)
 {
 	int i;
 
-	if ((*obj).map)
+	if (obj->map != NULL)
 	{
 		i = -1;
-		while ((*obj).map[++i])
+		while ((*obj).map[++i] != NULL)
+		{
 			free ((*obj).map[i]);
+			(*obj).map[i] = NULL;
+		}
 		free((*obj).map);
+		(*obj).map = NULL;
 	}
 }
 
@@ -66,16 +70,21 @@ int	chek_minus(t_filler *obj, int y, int x)
 {
 	int	i;
 	int j;
+	int k;
 
 	i = -1;
+	k = 0;
 	while(++i < (*obj).figure.hmap)
 	{
 		j = -1;
 		while (++j < (*obj).figure.lmap)
 			if ((*obj).figure.map[i][j] * (*obj).map.map[y + i][x + j] == -2)
-				return (1);
+				k++;
 	}
-	return (0);
+	if (k == 1)
+		return (1);
+	else
+		return (0);
 }
 
 int	take_sum(t_filler *obj, int y, int x)

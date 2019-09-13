@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 18:43:54 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/13 14:20:47 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/13 21:33:41 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_filler
 	int			y;
 	int			min;
 }				t_filler;
+
+int initialization(t_filler *play, int fd1);
 
 int		init_player(t_filler *play, int fd);
 int		init_info(t_map *obj, int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 11:07:37 by boris             #+#    #+#             */
-/*   Updated: 2019/09/13 14:19:49 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/13 23:01:46 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int init_info(t_map *obj, int fd)
 	save = ft_strstr(save, " ") + 1;
 	(*obj).lmap = ft_atoi(save++);
 	free(str);
-	if (((*obj).map = (int**)malloc(sizeof(int*) * (*obj).hmap)) == NULL)
+	if (((*obj).map = (int**)malloc(sizeof(int*) * (obj->hmap + 1))) == NULL)
 		return (0);
 	i = -1;
 	while (++i < (*obj).hmap)
@@ -63,6 +63,7 @@ int init_info(t_map *obj, int fd)
 			free_map((obj));
 			return (0);
 		}
+	obj->map[obj->hmap] = NULL;
 	return (1);
 }
 

@@ -9,7 +9,7 @@
             "command": "gcc",
             "args":[
                 "-g",
-                "main2.c",
+                "main.c",
                 "inits.c",
                 "tools.c",
                 "hot_map.c",
