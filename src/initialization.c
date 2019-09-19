@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 20:24:19 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/19 21:10:02 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/09/19 23:09:07 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_data(t_filler *data)//проверено
 	init_position(&(data->position));
 }
 
-int		init_player(t_filler *data, char *line)
+int		init_player(t_filler *data, char *line)//проверено
 {
 	if (ft_strstr(line, "$$$ exec p1 : "))
 	{
