@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:56:28 by boris             #+#    #+#             */
-/*   Updated: 2019/09/19 17:19:38 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/19 21:09:06 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_map
 	int			hmap;
 	int			lmap;
 	int			**map;
+	int			cur_hmap;
 }				t_map;
 
 typedef struct	s_position
@@ -29,6 +30,7 @@ typedef struct	s_position
 	int			x;
 	int			y;
 	int			min;
+	int			first;
 }				t_position;
 
 typedef struct	s_filler
@@ -39,5 +41,10 @@ typedef struct	s_filler
 	t_map		piece;
 	t_position	position;
 }				t_filler;
+
+void	init_map(t_map *map);
+void	init_position(t_position *position);
+void	init_data(t_filler *data);
+int		init_player(t_filler *data, char *line);
 
 #endif

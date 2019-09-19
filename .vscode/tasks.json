@@ -9,10 +9,8 @@
             "command": "gcc",
             "args":[
                 "-g",
-                "main.c",
-                "inits.c",
-                "tools.c",
-                "hot_map.c",
+                "./src/main.c",
+                "./src/initialization.c",
                 "./libft/libft.a"
             ]
         }
