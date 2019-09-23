@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 20:24:19 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/19 23:09:07 by svivienn         ###   ########.fr       */
+/*   Updated: 2019/09/21 14:17:35 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,33 @@ int		init_player(t_filler *data, char *line)//проверено
 		perror("Invalid Player");
 		return(0);
 	}
+	return (1);
+}
+
+int		init_plateau(t_filler *data, char *line)//проверенно
+{
+	if (data->map.hmap == 0 || data->map.lmap == 0)
+	{
+		data->map.hmap = ft_atoi(ft_strstr(line, " ") + 1);
+		data->map.lmap = ft_atoi(ft_strstr((ft_strstr(line, " ") + 1)," ") + 1);
+		data->map.cur_hmap = 0;
+		if (!(data->map.map = (int**)ft_memalloc(sizeof(int*) *
+			(data->map.hmap + 1))))
+		{
+			perror("Memory Allocation Error");
+			return (0);
+		}
+		data->map.cur_hmap = -1;
+		while (++(data->map.cur_hmap) < data->map.hmap)
+			if (!(data->map.map[data->map.cur_hmap] =
+			(int*)ft_memalloc(sizeof(int) * data->map.lmap)))
+			{
+				perror("Memory Allocation Error");
+				return (0);
+			}
+	}
+	data->map.cur_hmap = 0;
+	if (!(read_map(data)))
+		return (0);
 	return (1);
 }

@@ -11,6 +11,10 @@
                 "-g",
                 "./src/main.c",
                 "./src/initialization.c",
+                "./src/initialization2.c",
+                "./src/realy_hot_map.c",
+                "./src/free.c",
+                "./src/hot_map.c",
                 "./libft/libft.a"
             ]
         }
