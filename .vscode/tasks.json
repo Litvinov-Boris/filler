@@ -15,7 +15,9 @@
                 "./src/realy_hot_map.c",
                 "./src/free.c",
                 "./src/hot_map.c",
-                "./libft/libft.a"
+                "./libft/libft.a",
+                "-o",
+                "/Users/svivienn/Downloads/resources/svivienn.filler"
             ]
         }
     ]

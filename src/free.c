@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 14:11:19 by boris             #+#    #+#             */
-/*   Updated: 2019/09/21 13:30:32 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/26 20:22:38 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-void	free_map(t_map *map)//проверенно
+void	free_map(t_map *map)
 {
 	int i;
 

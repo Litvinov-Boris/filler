@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 20:24:19 by svivienn          #+#    #+#             */
-/*   Updated: 2019/09/21 14:17:35 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/26 20:26:12 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-void	init_map(t_map *map)//проверено
+void	init_map(t_map *map)
 {
 	map->hmap = 0;
 	map->lmap = 0;
@@ -20,7 +20,7 @@ void	init_map(t_map *map)//проверено
 	map->cur_hmap = 0;
 }
 
-void	init_position(t_position *position)//проверено
+void	init_position(t_position *position)
 {
 	position->x = 0;
 	position->y = 0;
@@ -28,7 +28,7 @@ void	init_position(t_position *position)//проверено
 	position->first = 0;
 }
 
-void	init_data(t_filler *data)//проверено
+void	init_data(t_filler *data)
 {
 	data->my[0] = 0;
 	data->my[1] = 0;
@@ -39,7 +39,7 @@ void	init_data(t_filler *data)//проверено
 	init_position(&(data->position));
 }
 
-int		init_player(t_filler *data, char *line)//проверено
+int		init_player(t_filler *data, char *line)
 {
 	if (ft_strstr(line, "$$$ exec p1 : "))
 	{
@@ -58,17 +58,18 @@ int		init_player(t_filler *data, char *line)//проверено
 	else
 	{
 		perror("Invalid Player");
-		return(0);
+		return (0);
 	}
 	return (1);
 }
 
-int		init_plateau(t_filler *data, char *line)//проверенно
+int		init_plateau(t_filler *data, char *line)
 {
 	if (data->map.hmap == 0 || data->map.lmap == 0)
 	{
 		data->map.hmap = ft_atoi(ft_strstr(line, " ") + 1);
-		data->map.lmap = ft_atoi(ft_strstr((ft_strstr(line, " ") + 1)," ") + 1);
+		data->map.lmap = ft_atoi(ft_strstr((ft_strstr(line, " ") + 1),
+							" ") + 1);
 		data->map.cur_hmap = 0;
 		if (!(data->map.map = (int**)ft_memalloc(sizeof(int*) *
 			(data->map.hmap + 1))))

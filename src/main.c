@@ -3,72 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 17:13:57 by boris             #+#    #+#             */
-/*   Updated: 2019/09/23 21:13:30 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/26 20:46:38 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
-void	test_print(t_map *map)
+int		read_all(t_filler *data, char *line)
 {
-	int i;
-	if (!map->map)
-		printf("pyazda");
-	map->cur_hmap = -1;
-	while(map->map[++map->cur_hmap] != NULL)
+	if (ft_strstr(line, "$$$"))
 	{
-		i = -1;
-		while (++i < map->lmap)
-			printf("%i ", map->map[map->cur_hmap][i]);
-		printf("\n");
+		if (!init_player(data, line))
+			return (0);
 	}
+	else if (ft_strstr(line, "Plateau"))
+	{
+		if (!init_plateau(data, line))
+			return (0);
+	}
+	else if (ft_strstr(line, "Piece"))
+	{
+		if (!init_piece(data, line))
+			return (0);
+		push_piece(data);
+		print_rez(&(data->position));
+		init_position(&(data->position));
+		free_map(&(data->piece));
+	}
+	return (1);
 }
 
-int	main(void)
+void	print_rez(t_position *position)
+{
+	char	*c;
+
+	c = ft_itoa(position->y);
+	write(1, c, ft_strlen(c));
+	write(1, " ", 1);
+	free(c);
+	c = ft_itoa(position->x);
+	write(1, c, ft_strlen(c));
+	write(1, "\n", 1);
+	free(c);
+}
+
+int		main(void)
 {
 	t_filler	data;
 	char		*line;
 	int			ret;
 
-int a = open ("./test", O_RDONLY);
-fd = 0;
-init_data(&data);
-	while((ret = get_next_line(fd, &line)))
+	init_data(&data);
+	while ((ret = get_next_line(0, &line)))
 	{
-		if(ret == -1)
+		if (ret == -1)
 		{
 			perror("VM Output Read Error");
-			break;
+			free(line);
+			break ;
 		}
-		if (ft_strstr(line, "$$$"))
+		if (!read_all(&data, line))
 		{
-			if (!init_player(&data, line))
-				break;
+			free(line);
+			break ;
 		}
-		else if (ft_strstr(line, "Plateau"))
-		{
-			if (!init_plateau(&data, line))
-				break;
-		}
-		else if (ft_strstr(line, "Piece"))
-		{
-			if (!init_piece(&data, line))
-				break;
-			push_piece(&data);
-			test_print(&(data.piece));
-			printf("%i, %i\n", data.position.y, data.position.x);
-			init_position(&(data.position));
-			free_map(&(data.piece));
-			//init_position(&(data.position));
-		}
+		free(line);
 	}
-close(a);
 	free_map(&(data.map));
 	free_map(&(data.piece));
 	return (0);

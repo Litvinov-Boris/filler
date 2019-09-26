@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   hot_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 12:33:25 by boris             #+#    #+#             */
-/*   Updated: 2019/09/23 20:51:02 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/26 20:31:05 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-int			read_map(t_filler *data)//проверенно
+int			read_map(t_filler *data)
 {
 	int		ret;
 	char	*line;
 
 	while (data->map.cur_hmap != data->map.hmap &&
-		(ret = get_next_line(fd, &line)))
+		(ret = get_next_line(0, &line)))
 	{
 		if (ret == -1)
 		{
@@ -30,7 +30,7 @@ int			read_map(t_filler *data)//проверенно
 			if (!(fill_map(data, line + 4)))
 			{
 				free(line);
-				return(0);
+				return (0);
 			}
 			data->map.cur_hmap++;
 		}
@@ -39,7 +39,7 @@ int			read_map(t_filler *data)//проверенно
 	return (1);
 }
 
-int			ismapline(char *line)//проверенно
+int			ismapline(char *line)
 {
 	if (ft_strchr(line, '.') || ft_strchr(line, '*') || ft_strchr(line, 'O') ||
 		ft_strchr(line, 'o') || ft_strchr(line, 'x') || ft_strchr(line, 'X'))
@@ -47,14 +47,14 @@ int			ismapline(char *line)//проверенно
 	return (0);
 }
 
-int			fill_map(t_filler *data, char *line)//проверенно
+int			fill_map(t_filler *data, char *line)
 {
 	int i;
 
 	if (ft_strlen(line) != data->map.lmap)
 	{
 		perror("Invalid Map");
-		return(0);
+		return (0);
 	}
 	i = -1;
 	while (++i < data->map.lmap)
@@ -68,7 +68,7 @@ int			fill_map(t_filler *data, char *line)//проверенно
 		else
 		{
 			perror("Invalid Map");
-			return(0);
+			return (0);
 		}
 	}
 	return (1);

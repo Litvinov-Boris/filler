@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   realy_hot_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 15:32:02 by boris             #+#    #+#             */
-/*   Updated: 2019/09/23 21:16:22 by boris            ###   ########.fr       */
+/*   Updated: 2019/09/26 20:29:54 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-void	hot_map(t_map *map) //проверено
+void	hot_map(t_map *map)
 {
 	int i;
 	int j;
@@ -40,7 +40,7 @@ void	hot_map(t_map *map) //проверено
 	}
 }
 
-int		test_zeros(t_map *map) //проверено
+int		test_zeros(t_map *map)
 {
 	int	i;
 	int	j;
@@ -58,7 +58,7 @@ int		test_zeros(t_map *map) //проверено
 	return (0);
 }
 
-int		chek_place(t_map *map, int y, int x, int k)//проверено
+int		chek_place(t_map *map, int y, int x, int k)
 {
 	if (y > 0 && map->map[y - 1][x] == k)
 		return (1);
@@ -79,7 +79,7 @@ int		chek_place(t_map *map, int y, int x, int k)//проверено
 	return (0);
 }
 
-void	push_piece(t_filler *data)//проверено
+void	push_piece(t_filler *data)
 {
 	int i;
 	int j;
@@ -93,7 +93,7 @@ void	push_piece(t_filler *data)//проверено
 		{
 			if (chek_minus(data, i, j))
 			{
-				if (data->position.first = 0)
+				if (data->position.first == 0)
 				{
 					data->position.first = 1;
 					fill_position(data, i, j, take_sum(data, i, j));
@@ -105,7 +105,7 @@ void	push_piece(t_filler *data)//проверено
 	}
 }
 
-int		chek_minus(t_filler *data, int y, int x)//проверено
+int		chek_minus(t_filler *data, int y, int x)
 {
 	int i;
 	int j;
@@ -125,5 +125,5 @@ int		chek_minus(t_filler *data, int y, int x)//проверено
 	if (k == 1)
 		return (1);
 	else
-		return (0);	
+		return (0);
 }
