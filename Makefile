@@ -6,34 +6,44 @@
 #    By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 18:44:19 by svivienn          #+#    #+#              #
-#    Updated: 2019/09/13 19:15:05 by svivienn         ###   ########.fr        #
+#    Updated: 2019/09/26 22:11:51 by svivienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = libft/libft.a
 NAME = svivienn.filler
-SRCS =	main.c inits.c tools.c hot_map.c
-SRCO = $(SRCS:.c=.o)
-INCLUDES = filler.h
+LIBFT = ./libft/libft.a
+SRC_DIR = ./src/
+OBJ_DIR = ./obj/
+SRC_INC_DIR = ./includes/
+LIB_INC_DIR = ./libft/
+LIB_DIR = ./libft/
+SRC_FILES = main.c free.c hot_map.c initialization.c initialization2.c \
+	realy_hot_map.c
+SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o, $(SRCS))
+CC = gcc
+CFLGS = -Wall -Werror -Wextra
+INCL = -I$(SRC_INC_DIR) -I$(LIB_INC_DIR)
+LFLGS = -L$(LIB_DIR) -lft
 
-all:$(NAME)
+all: $(NAME)
 
-$(LIBFT): 
-	make -C libft
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-$(SRCO): %.o: %.c
-	gcc $F -g -c $< -I. -o $@
+$(LIBFT):
+	$(MAKE) -C libft
 
-$(NAME): $(LIBFT) $(SRCO)
-	gcc $F -g $(SRCO) -o /Users/svivienn/Downloads/resources/svivienn.filler $(LIBFT)
-	chmod 777 /Users/svivienn/Downloads/resources/svivienn.filler
-	#gcc $F -g $(SRCO) -o /home/boris/Загрузки/resources/resources/svivienn.filler $(LIBFT)
-	#chmod 777 /home/boris/Загрузки/resources/resources/svivienn.filler
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCL) $(LFLGS)
+	chmod 777 ./$(NAME)
 
 clean:
-	rm -f $(SRCO)
-	make -C libft clean
+	rm -rf $(OBJ_DIR)
+	$(MAKE) -C $(LIB_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
-	make -C LIBFT fclean
+	rm -rf $(NAME)
+	$(MAKE) -C $(LIB_DIR) fclean
+
+re: fclean all
